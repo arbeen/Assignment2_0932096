@@ -1,0 +1,27 @@
+[
+  {
+    "id": "101",
+    "authorId": "1",
+    "postContent": "Arbin Shrestha enrolled in PG course."
+  },
+  {
+    "id": "102",
+    "authorId": "2",
+    "postContent": "Arbin Shrestha studied Java CE"
+  },
+  {
+    "id": "103",
+    "authorId": "3",
+    "postContent": "Arbin Shrestha studied Java EE."
+  },
+  {
+    "id": "104",
+    "authorId": "4",
+    "postContent": "Arbin learnt Stream API"
+  },
+  {
+    "id": "105",
+    "authorId": "5",
+    "postContent": "Arbin posts blog now."
+  }
+]

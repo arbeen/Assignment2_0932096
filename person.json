@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "firstName": "Arbin",
+    "lastName": "Shrestha",
+    "age": 27,
+    "gender": "Male"
+  },
+  {
+    "id": "2",
+    "firstName": "Wang",
+    "lastName": "Xiu",
+    "age": 40,
+    "gender": "Female"
+  },
+  {
+    "id": "3",
+    "firstName": "Zhang",
+    "lastName": "Ying",
+    "age": 35,
+    "gender": "Female"
+  },
+  {
+    "id": "4",
+    "firstName": "Chen",
+    "lastName": "Ming",
+    "age": 28,
+    "gender": "Male"
+  },
+  {
+    "id": "5",
+    "firstName": "Liu",
+    "lastName": "Jian",
+    "age": 50,
+    "gender": "Male"
+  }
+]
