@@ -7,9 +7,9 @@ public class BlogPostTest {
     @Test
     public void testValidBlogPost() {
         BlogPost blogPost = BlogPost.builder()
-                .id("1")
-                .authorId("1")
-                .postContent("Arbin's Blog 1")
+                .withId("1")
+                .withAuthorId("1")
+                .withPostContent("Arbin's Blog 1")
                 .build();
 
         assertNotNull(blogPost);
@@ -22,8 +22,8 @@ public class BlogPostTest {
     public void testBlogPostWithNullId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             BlogPost.builder()
-                    .authorId("1")
-                    .postContent("Arbin's Blog 1")
+                    .withAuthorId("1")
+                    .withPostContent("Arbin's Blog 1")
                     .build();
         });
         assertEquals("Post ID cannot be null.", exception.getMessage(), "Exception message should match.");
@@ -33,11 +33,10 @@ public class BlogPostTest {
     public void testBlogPostWithNullAuthorId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             BlogPost.builder()
-                    .id("1")
-                    .postContent("Arbin's Blog 1")
+                    .withId("1")
+                    .withPostContent("Arbin's Blog 1")
                     .build();
         });
         assertEquals("Author ID cannot be null.", exception.getMessage(), "Exception message should match.");
     }
-
 }

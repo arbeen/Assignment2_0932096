@@ -1,16 +1,18 @@
 package assignment2;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @ToString
 @EqualsAndHashCode
-@Builder
-@JsonDeserialize(builder = Person.PersonBuilder.class)
+@Jacksonized
+@Builder(builderClassName = "PersonBuilder", setterPrefix = "with")
 public class Person {
     private final String id;
     private final String firstName;
@@ -18,27 +20,35 @@ public class Person {
     private final Integer age;
     private final String gender;
 
-    //    Person Builder
-//    Commenting to create a PR
+    // Private constructor for builder pattern, with Jackson annotations for deserialization
+    private Person(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("age") Integer age, @JsonProperty("gender") String gender) {
+        validate(id, firstName, lastName, age);
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    private static void validate(String id, String firstName, String lastName, Integer age) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null.");
+        }
+        if (firstName == null || firstName.trim().isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be null or blank.");
+        }
+        if (lastName == null || lastName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Last name cannot be null or blank.");
+        }
+        if (age != null && age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
+    }
+
     public static class PersonBuilder {
         public Person build() {
-            validate();
+            validate(id, firstName, lastName, age);
             return new Person(id, firstName, lastName, age, gender);
-        }
-
-        private void validate() {
-            if (id == null) {
-                throw new IllegalArgumentException("ID cannot be null.");
-            }
-            if (firstName == null || firstName.trim().isEmpty()) {
-                throw new IllegalArgumentException("First name cannot be null or blank.");
-            }
-            if (lastName == null || lastName.trim().isEmpty()) {
-                throw new IllegalArgumentException("Last name cannot be null or blank.");
-            }
-            if (age != null && age < 0) {
-                throw new IllegalArgumentException("Age cannot be negative.");
-            }
         }
     }
 }

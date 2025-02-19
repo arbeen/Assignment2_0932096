@@ -7,11 +7,11 @@ public class PersonTest {
     @Test
     public void testValidPersonCreation() {
         Person person = Person.builder()
-                .id("1")
-                .firstName("Arbin")
-                .lastName("Shrestha")
-                .age(27)
-                .gender("Male")
+                .withId("1")
+                .withFirstName("Arbin")
+                .withLastName("Shrestha")
+                .withAge(27)
+                .withGender("Male")
                 .build();
 
         assertNotNull(person);
@@ -27,10 +27,10 @@ public class PersonTest {
     public void testPersonWithNullId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .firstName("Arbin")
-                    .lastName("Shrestha")
-                    .age(27)
-                    .gender("Male")
+                    .withFirstName("Arbin")
+                    .withLastName("Shrestha")
+                    .withAge(27)
+                    .withGender("Male")
                     .build();
         });
         assertEquals("ID cannot be null.", exception.getMessage(), "Exception message should match.");
@@ -40,11 +40,11 @@ public class PersonTest {
     public void testPersonWithBlankFirstName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .id("1")
-                    .firstName("  ")  // Blank First name
-                    .lastName("Shrestha")
-                    .age(27)
-                    .gender("Male")
+                    .withId("1")
+                    .withFirstName("  ")  // Blank First name
+                    .withLastName("Shrestha")
+                    .withAge(27)
+                    .withGender("Male")
                     .build();
         });
         assertEquals("First name cannot be null or blank.", exception.getMessage(), "Exception message should match.");
@@ -54,11 +54,11 @@ public class PersonTest {
     public void testPersonWithBlankLastName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .id("2")
-                    .firstName("Arbin")
-                    .lastName("  ")  // Blank last name
-                    .age(27)
-                    .gender("Male")
+                    .withId("2")
+                    .withFirstName("Arbin")
+                    .withLastName("  ")  // Blank last name
+                    .withAge(27)
+                    .withGender("Male")
                     .build();
         });
         assertEquals("Last name cannot be null or blank.", exception.getMessage(), "Exception message should match.");
@@ -68,11 +68,11 @@ public class PersonTest {
     public void testPersonWithNegativeAge() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .id("3")
-                    .firstName("Arbin")
-                    .lastName("Shrestha")
-                    .age(-5)  // Negative age
-                    .gender("Male")
+                    .withId("3")
+                    .withFirstName("Arbin")
+                    .withLastName("Shrestha")
+                    .withAge(-5)  // Negative age
+                    .withGender("Male")
                     .build();
         });
         assertEquals("Age cannot be negative.", exception.getMessage(), "Exception message should match.");
@@ -82,11 +82,11 @@ public class PersonTest {
     public void testPersonWithNullFirstName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .id("4")
-                    .firstName(null)  // Null first name
-                    .lastName("Shrestha")
-                    .age(27)
-                    .gender("Male")
+                    .withId("4")
+                    .withFirstName(null)  // Null first name
+                    .withLastName("Shrestha")
+                    .withAge(27)
+                    .withGender("Male")
                     .build();
         });
         assertEquals("First name cannot be null or blank.", exception.getMessage(), "Exception message should match.");
@@ -96,11 +96,11 @@ public class PersonTest {
     public void testPersonWithNullLastName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Person.builder()
-                    .id("5")
-                    .firstName("Arbin")
-                    .lastName(null)  // Null last name
-                    .age(27)
-                    .gender("Male")
+                    .withId("5")
+                    .withFirstName("Arbin")
+                    .withLastName(null)  // Null last name
+                    .withAge(27)
+                    .withGender("Male")
                     .build();
         });
         assertEquals("Last name cannot be null or blank.", exception.getMessage(), "Exception message should match.");
